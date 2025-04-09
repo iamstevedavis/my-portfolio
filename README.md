@@ -4,7 +4,6 @@ A sleek, responsive portfolio website built with Astro, React, and Tailwind CSS,
 
 ![Portfolio Screenshot](https://github.com/user-attachments/assets/287dbb83-9b33-4df7-9cee-f58cdec2dfbe)
 
-
 ## Features
 
 - ✨ **Modern Design**: Clean, professional layout with glassmorphism effects
