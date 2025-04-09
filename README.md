@@ -2,7 +2,8 @@
 
 A sleek, responsive portfolio website built with Astro, React, and Tailwind CSS, featuring modern animations and glassmorphism effects.
 
-![Portfolio Screenshot](https://github.com/user-attachments/assets/4f2466f1-1ebe-4cbe-857c-40eccd63c384)
+![Portfolio Screenshot](https://github.com/user-attachments/assets/287dbb83-9b33-4df7-9cee-f58cdec2dfbe)
+
 
 ## Features
 
@@ -13,10 +14,6 @@ A sleek, responsive portfolio website built with Astro, React, and Tailwind CSS,
 - 🚀 **Performance Focused**: Built with Astro for excellent loading speeds
 - 🧩 **Modular Structure**: Easy to customize and extend
 - 🔍 **SEO Friendly**: Structured content for better search engine visibility
-
-## Demo
-
-[Live Demo](https://rishilol.vercel.app/)
 
 ## Getting Started
 
