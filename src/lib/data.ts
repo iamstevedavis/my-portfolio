@@ -101,6 +101,21 @@ export const skills = {
 
 export const projects = [
   {
+    title: "Sanctuary Refugee Health Clinic App",
+    github: "https://github.com/SanctuaryRefugeeHealth",
+    description: [
+      "This is a web application built for the Sanctuary Refugee Health Clinic in Kitchener, Ontario.",
+      "It is designed to help the clinic manage patient information, appointments, and medical records.",
+      "The app is built using React for the frontend and Node.js for the backend.",
+      "It uses Twilio for SMS notifications and PostgreSQL for the database.",
+      "The app is designed to be user-friendly and accessible, with a focus on providing a seamless experience for both clinic staff and patients.",
+      "The app is currently in development and is being used by the clinic to manage patient information and appointments.",
+      "The app is designed to be secure and compliant with HIPAA regulations, ensuring that patient information is kept private and confidential.",
+      "The app is also designed to be scalable, allowing the clinic to add new features and functionality as needed.",
+      "The app supports communication in multiple languages, including English, French, and Arabic.",
+    ],
+  },
+  {
     title: "Clipify",
     github: "https://github.com/iamstevedavis/clipify",
     description: [
