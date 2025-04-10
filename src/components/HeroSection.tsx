@@ -122,7 +122,7 @@ export default function HeroSection() {
           <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-sm backdrop-filter p-4 rounded-lg border border-purple-500/20 dark:border-purple-500/10 shadow-sm">
             <p className="text-muted-foreground pl-4 py-2 mb-4 relative">
               <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></span>
-              🚀 Passionate software engineer with a versatile skill set
+              🚀 Passionate software developer with a versatile skill set
               spanning multiple domains. I thrive on solving complex challenges
               across different platforms and environments, adapting quickly to
               new technologies and methodologies. My holistic approach combines
