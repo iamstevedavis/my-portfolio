@@ -1,8 +1,10 @@
-# Modern Portfolio Template
+# My Portfolio
 
 A sleek, responsive portfolio website built with **Astro**, **React**, and **Tailwind CSS**, featuring modern animations and stunning glassmorphism effects.
 
-![Portfolio Screenshot](https://github.com/user-attachments/assets/4f2466f1-1ebe-4cbe-857c-40eccd63c384)
+![Portfolio Screenshot](https://github.com/user-attachments/assets/287dbb83-9b33-4df7-9cee-f58cdec2dfbe)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/df7ced09-9590-4bfc-858c-c9aa314181a6/deploy-status)](https://app.netlify.com/sites/visda/deploys)
 
 ## ✨ Features
 
@@ -14,11 +16,7 @@ A sleek, responsive portfolio website built with **Astro**, **React**, and **Tai
 - **Modular Structure** – Built for easy customization and scalability
 - **SEO Friendly** – Structured content and meta tags for better visibility
 
-## 🚀 Demo
-
-👉 [Live Demo](https://rishilol.vercel.app/)
-
-## 🛠 Getting Started
+## Getting Started
 
 ### Prerequisites
 
