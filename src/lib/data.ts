@@ -1,12 +1,14 @@
 export const personalInfo = {
   name: "Steve D",
+  title: "Senior Software Engineer · AI-Accelerated Builder",
   location: "Waterloo Region, Ontario, Canada",
   email: "steve@visda.ca",
   github: "https://github.com/iamstevedavis",
   linkedin: "https://www.linkedin.com/in/iamstevedavis/",
+  devto: "https://dev.to/iamstevedavis",
   profilePicture: "/profile.jpg",
   heroDescription:
-    "🚀 Passionate software engineer with a versatile skill set spanning multiple domains. I thrive on solving complex challenges across different platforms and environments, adapting quickly to new technologies and methodologies. My holistic approach combines technical expertise with creative problem-solving, allowing me to develop solutions that are both innovative and practical. I'm driven by continuous learning and a commitment to excellence, whether working independently or collaborating with diverse teams to create impactful, scalable solutions.",
+    "I build reliable products end-to-end across backend, infrastructure, and frontend. My workflow is AI-assisted and execution-focused: I self-host OpenClaw on a VPS for practical automation, pair AI tools with strong engineering fundamentals, and ship maintainable systems quickly.",
 };
 
 export const workExperience = [
@@ -66,7 +68,7 @@ export const education = [
     institution: "Conestoga College",
     location: "Kitchener, Canada",
     degree: "Software Engineering Technology, Advanced Diploma",
-    period: "Setpember 2019 - April 2013",
+    period: "September 2019 - April 2023",
     achievements: [
       "Academic Distinction",
       "Dean's List",
@@ -101,6 +103,24 @@ export const skills = {
     "Fortify",
   ],
 };
+
+export const aiWorkflowHighlights = [
+  {
+    title: "Self-Hosted AI Ops",
+    description:
+      "Run OpenClaw on a VPS for secure automation, remote workflows, and assistant-driven operations.",
+  },
+  {
+    title: "AI-Assisted Delivery",
+    description:
+      "Use AI copilots for implementation drafts, debugging, and code review acceleration while keeping architecture and final quality decisions human-led.",
+  },
+  {
+    title: "Production-First Engineering",
+    description:
+      "Combine Docker, CI/CD, observability, and pragmatic DevOps practices to ship software that is stable, measurable, and easy to operate.",
+  },
+];
 
 export const projects = [
   {
