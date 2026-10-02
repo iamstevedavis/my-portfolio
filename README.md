@@ -26,7 +26,7 @@ A sleek, responsive portfolio website built with **Astro**, **React**, and **Tai
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/my-portfolio.git
+git clone https://github.com/iamstevedavis/my-portfolio.git
 cd my-portfolio
 
 # Install dependencies
@@ -155,7 +155,39 @@ yarn preview
 
 ## 📤 Deployment
 
-Easily deploy to platforms like **Vercel**, **Netlify**, **GitHub Pages**, or any static host of your choice.
+### Current site: Netlify
+
+The live website at **https://visda.ca** is served by **Netlify**. This repository (`iamstevedavis/my-portfolio`) contains the current Astro source code, so make website changes here—not in the older Gatsby or GitHub Pages repositories.
+
+```text
+my-portfolio (Astro) → Netlify → visda.ca
+```
+
+- **Deployment dashboard:** [Netlify site `visda`](https://app.netlify.com/sites/visda/deploys)
+- **Repository default branch:** `main`
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+
+The build command and output directory above describe this project's Astro build. Confirm the connected repository, production branch, build settings, and automatic deploy configuration in Netlify before relying on a push to deploy; those account-level settings are not recorded in this repository.
+
+To publish changes, commit and push to the branch configured for production in Netlify, then check the deployment dashboard for a successful build and verify https://visda.ca.
+
+### Previous site: Gatsby + GitHub Pages
+
+The older deployment used two separate repositories:
+
+```text
+visda/master (Gatsby source)
+  → GitHub Actions builds public/
+  → pushes public/ to iamstevedavis.github.io/master
+  → GitHub Pages
+```
+
+The workflow is in [`visda/.github/workflows/ci.yml`](https://github.com/iamstevedavis/visda/blob/master/.github/workflows/ci.yml). It runs on pushes and pull requests targeting `master`, installs dependencies, builds Gatsby, and uses the `API_TOKEN_GITHUB` secret to push the generated site to `iamstevedavis.github.io`. The Gatsby build also copies its `CNAME` file (`visda.ca`) into `public/`.
+
+GitHub Pages still has `visda.ca` configured as its custom domain and publishes from the root of `iamstevedavis.github.io`'s `master` branch, but **the domain currently points to Netlify**. Updating those old repositories is not the current way to update the live site.
+
+The separate [`iamstevedavis/iamstevedavis`](https://github.com/iamstevedavis/iamstevedavis) repository is only the GitHub profile README, not the website source.
 
 ## 📝 License
 
