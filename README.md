@@ -20,7 +20,7 @@ A sleek, responsive portfolio website built with **Astro**, **React**, and **Tai
 
 ### Prerequisites
 
-- Node.js (v18+ recommended)
+- Node.js 22 (v22.19.0 or newer). With nvm, run `nvm install` and `nvm use` in this repository to use `.nvmrc`.
 - npm / yarn / bun
 
 ### Installation
@@ -45,6 +45,28 @@ bun dev
 ```
 
 Visit `http://localhost:4321` in your browser to see it in action.
+
+### Run with Docker
+
+Requires Docker with Docker Compose; you do not need Node.js installed locally.
+
+For development with hot reload:
+
+```bash
+docker compose up --build dev
+```
+
+Open **http://localhost:4321**. The source directory is mounted into the container, while dependencies and generated Astro files stay in container volumes. After changing dependencies, recreate those anonymous volumes with `docker compose up --build --renew-anon-volumes dev`.
+
+To build and serve the production site with Nginx:
+
+```bash
+docker compose --profile production up --build web
+```
+
+Open **http://localhost:8080**. This uses a multi-stage build: Node.js builds the static site, and the final Nginx image contains only the generated site and server configuration. Source changes require rebuilding this image.
+
+Press **Ctrl+C** to stop, and run `docker compose --profile production down` to remove the containers. Both ports bind only to localhost. Docker is an optional local/self-hosted setup; the live Netlify deployment remains unchanged.
 
 ## 🧩 Customizing the Portfolio
 
@@ -167,6 +189,7 @@ my-portfolio (Astro) → Netlify → visda.ca
 - **Repository default branch:** `main`
 - **Build command:** `npm run build`
 - **Publish directory:** `dist`
+- **Node.js:** 22 (v22.19.0 or newer); `.nvmrc` pins the major version, and `package.json` records the supported range.
 
 The build command and output directory above describe this project's Astro build. Confirm the connected repository, production branch, build settings, and automatic deploy configuration in Netlify before relying on a push to deploy; those account-level settings are not recorded in this repository.
 

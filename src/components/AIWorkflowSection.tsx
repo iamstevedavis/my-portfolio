@@ -12,7 +12,7 @@ export default function AIWorkflowSection() {
             🤖 AI Workflow
           </h2>
           <p className="text-muted-foreground mb-8 text-center md:text-left">
-            Practical AI usage in real engineering delivery — from coding velocity to infrastructure operations.
+            From ambiguous customer feedback to AI-assisted prototypes and production-ready features.
           </p>
         </MotionWrapper>
 

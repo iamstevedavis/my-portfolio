@@ -1,0 +1,19 @@
+services:
+  dev:
+    build:
+      context: .
+      target: development
+    ports:
+      - "127.0.0.1:4321:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.astro
+
+  web:
+    profiles: [production]
+    build:
+      context: .
+      target: production
+    ports:
+      - "127.0.0.1:8080:80"
