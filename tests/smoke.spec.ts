@@ -44,6 +44,7 @@ test("mobile menu opens, navigates, and closes", async ({ page }) => {
 });
 
 test("page has no serious or critical automated accessibility violations", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "light" });
   await page.goto("/");
   const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
