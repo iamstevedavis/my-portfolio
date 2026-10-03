@@ -32,7 +32,7 @@ export default function HeroSection() {
         <motion.div
           className="flex flex-col md:flex-row md:items-center justify-between mb-8"
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           animate="visible"
         >
           <div className="text-center md:text-left">

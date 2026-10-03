@@ -20,7 +20,7 @@ export default function AIWorkflowSection() {
           {aiWorkflowHighlights.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: index * 0.08 }}
               viewport={{ once: true, margin: "-40px" }}

@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container max-w-4xl mx-auto px-6 md:px-4">
         <motion.div
           className="flex flex-col md:flex-row justify-between items-center"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
@@ -16,12 +16,13 @@ export default function Footer() {
             className="text-sm text-muted-foreground text-center md:text-left"
             whileHover={{ scale: 1.01 }}
           >
-            &copy; {new Date().getFullYear()} {personalInfo.name}. All rights
+            &copy; <span data-current-year>{new Date().getFullYear()}</span>{" "}
+            {personalInfo.name}. All rights
             reserved. ✨
           </motion.p>
           <motion.p
             className="text-sm text-muted-foreground mt-2 md:mt-0 text-center md:text-left"
-            initial={{ opacity: 0 }}
+            initial={false}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             viewport={{ once: true }}
@@ -30,7 +31,7 @@ export default function Footer() {
             Built with{" "}
             <motion.span
               className="inline-block"
-              initial={{ rotate: 0 }}
+              initial={false}
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.5 }}
             >

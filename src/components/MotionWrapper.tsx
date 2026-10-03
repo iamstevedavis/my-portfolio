@@ -28,7 +28,7 @@ export default function MotionWrapper({
 }: MotionWrapperProps) {
   return (
     <motion.div
-      initial="hidden"
+      initial={false}
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={defaultAnimations}

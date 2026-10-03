@@ -37,7 +37,7 @@ export default function ProjectsSection() {
                       <motion.li
                         key={i}
                         className="text-muted-foreground"
-                        initial={{ opacity: 0, x: -10 }}
+                        initial={false}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.1 }}
                         viewport={{ once: true }}
