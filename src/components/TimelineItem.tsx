@@ -60,7 +60,7 @@ export default function TimelineItem({
         >
           <h3 className="font-medium">{title}</h3>
           <p className="text-sm text-muted-foreground">{subtitle}</p>
-          <p className="text-xs text-muted-foreground/70 mb-2">{date}</p>
+          <p className="text-xs text-muted-foreground mb-2">{date}</p>
         </motion.div>
         <motion.div
           initial={false}
