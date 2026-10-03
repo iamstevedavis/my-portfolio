@@ -23,4 +23,4 @@ After a Deploy Preview is available, validate response headers:
 2. A built, content-hashed `/_astro/*` asset must return `Cache-Control: public, max-age=31536000, immutable`.
 3. `/profile.jpg` must not receive the immutable rule.
 
-If build behavior conflicts with a dashboard setting, verify the site's current configured values and make an intentional change in either the dashboard or this file. To roll back the caching change, remove the `[[headers]]` block; the build settings can be rolled back separately if necessary.
+If build behavior conflicts with a dashboard setting, verify the site's current configured values and make an intentional change in either the dashboard or this file. To roll back the hostname redirects, remove the four `[[redirects]]` entries for `visda.netlify.app` and `main--visda.netlify.app` from `netlify.toml`, then deploy that change and verify both hostnames no longer redirect. To roll back the caching change, remove the `[[headers]]` block; the build settings can be rolled back separately if necessary.
