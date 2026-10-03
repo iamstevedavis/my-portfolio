@@ -1,5 +1,5 @@
 import { aiWorkflowHighlights } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion } from "./ProgressiveMotion";
 import MotionWrapper from "./MotionWrapper";
 import { GlassCard } from "./ui/glass-card";
 
@@ -20,7 +20,7 @@ export default function AIWorkflowSection() {
           {aiWorkflowHighlights.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={false}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: index * 0.08 }}
               viewport={{ once: true, margin: "-40px" }}

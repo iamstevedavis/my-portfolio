@@ -1,7 +1,7 @@
 import { workExperience } from "@/lib/data";
 import TimelineItem from "./TimelineItem";
 import { Briefcase } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "./ProgressiveMotion";
 import MotionWrapper from "./MotionWrapper";
 
 export default function ExperienceSection() {
@@ -15,7 +15,7 @@ export default function ExperienceSection() {
           <h2 className="text-2xl font-bold mb-8 text-center md:text-left flex items-center md:inline-block">
             <motion.span
               className="inline-block mr-2"
-              initial={false}
+              initial={{ rotate: 0 }}
               whileInView={{ rotate: [0, -10, 10, -5, 5, 0] }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
@@ -37,7 +37,7 @@ export default function ExperienceSection() {
             >
               <motion.div
                 className="mt-3 p-4 bg-background/80 backdrop-blur-sm backdrop-filter rounded-lg border border-purple-500/20 dark:bg-card/10 dark:border-purple-500/10 shadow-sm"
-                initial={false}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
@@ -53,7 +53,7 @@ export default function ExperienceSection() {
                     <motion.li
                       key={i}
                       className="text-muted-foreground relative pl-6"
-                      initial={false}
+                      initial={{ opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.1 * i }}
                       viewport={{ once: true }}

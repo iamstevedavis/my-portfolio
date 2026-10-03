@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "./ProgressiveMotion";
 import type { MotionProps, Variants } from "framer-motion";
 
 interface MotionWrapperProps extends MotionProps {
@@ -28,7 +28,8 @@ export default function MotionWrapper({
 }: MotionWrapperProps) {
   return (
     <motion.div
-      initial={false}
+      initial="hidden"
+      data-scroll-reveal
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={defaultAnimations}
