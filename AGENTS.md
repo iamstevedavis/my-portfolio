@@ -10,6 +10,14 @@
 - Preserve readable content without JavaScript, accessibility, keyboard access,
   light/dark themes, responsive layouts, and reduced-motion behavior.
 
+## Issue ownership
+- Before starting implementation on a GitHub issue, assign it to `iamstevedavis`
+  and verify the assignment. Preserve any existing assignees rather than replacing
+  them. Apply this to each issue being worked on, not merely referenced for context.
+- If assignment fails or permissions are insufficient, report the blocker and ask
+  for guidance before starting implementation. Do not claim assignment succeeded
+  without verifying it.
+
 ## Required worktree workflow
 - Inspect the current checkout and existing instructions before editing. Never
   discard unrelated changes or reuse another task's branch/worktree.
@@ -49,6 +57,11 @@
   run and their results, relevant preview/screenshots, and deployment risks.
 - Use `Closes #<number>` only when the issue is fully resolved; otherwise use
   `Refs #<number>`. Do not close broad issues for partial improvements.
+- Put closing keywords in the PR description, not just the title. GitHub closes
+  linked issues automatically when the PR merges into the default branch (`main`).
+  For multiple fully resolved issues, list a separate `Closes #<number>` for each.
+  Leave partial work linked with `Refs` and keep those issues open; do not manually
+  close an issue merely because its PR was opened or its branch was pushed.
 - When addressing PR review comments, reply in each affected comment thread after
   pushing the fix. Summarize what changed, link the relevant commit, and report
   applicable validation. Do not substitute a general PR comment for thread replies.
