@@ -23,12 +23,16 @@ npm ci
 npm run check
 npm run build
 npm run check:prerender
+node --test scripts/production-smoke.test.mjs
 npm run test:smoke
 npm audit
 ```
 
-Install the Playwright browser first when needed: `npx playwright install
---with-deps chromium`.
+Install the Playwright browser first when needed:
+
+```sh
+npx playwright install --with-deps chromium
+```
 
 ## Automated updates and review
 
