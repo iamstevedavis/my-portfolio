@@ -9,3 +9,26 @@
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+[[redirects]]
+  from = "https://visda.netlify.app/*"
+  to = "https://visda.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://visda.netlify.app/*"
+  to = "https://visda.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://main--visda.netlify.app/*"
+  to = "https://visda.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://main--visda.netlify.app/*"
+  to = "https://visda.ca/:splat"
+  status = 301
+  force = true
