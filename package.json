@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/write-netlify-headers.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
