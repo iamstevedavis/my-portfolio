@@ -49,6 +49,12 @@
   run and their results, relevant preview/screenshots, and deployment risks.
 - Use `Closes #<number>` only when the issue is fully resolved; otherwise use
   `Refs #<number>`. Do not close broad issues for partial improvements.
+- When addressing PR review comments, reply in each affected comment thread after
+  pushing the fix. Summarize what changed, link the relevant commit, and report
+  applicable validation. Do not substitute a general PR comment for thread replies.
+- If feedback is unclear, cannot be addressed, or is intentionally not followed,
+  reply in that thread with a question or explanation instead of silently ignoring
+  it. Do not claim a comment is fixed until the change is pushed and verified.
 - For visual changes, check mobile/desktop, both themes, and keyboard access.
   Review the Netlify Deploy Preview when available; report unavailable checks.
 
