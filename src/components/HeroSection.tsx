@@ -1,6 +1,6 @@
 import { personalInfo } from "@/lib/data";
 import { Mail, Github, MapPin, Linkedin, BookOpenText } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "./ProgressiveMotion";
 import MotionWrapper from "./MotionWrapper";
 
 export default function HeroSection() {
@@ -32,7 +32,7 @@ export default function HeroSection() {
         <motion.div
           className="flex flex-col md:flex-row md:items-center justify-between mb-8"
           variants={containerVariants}
-          initial={false}
+          initial="hidden"
           animate="visible"
         >
           <div className="text-center md:text-left">

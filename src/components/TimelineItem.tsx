@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion } from "./ProgressiveMotion";
 
 interface TimelineItemProps {
   title: string;
@@ -22,7 +22,8 @@ export default function TimelineItem({
   return (
     <motion.div
       className="relative flex gap-6"
-      initial={false}
+      initial={{ opacity: 0, y: 20 }}
+      data-scroll-reveal
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -30,7 +31,7 @@ export default function TimelineItem({
       <div className="flex flex-col items-center">
         <motion.div
           className="flex h-[18px] w-[18px] rounded-full border border-purple-500/50 bg-background dark:bg-muted z-10"
-          initial={false}
+          initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           transition={{
             type: "spring",
@@ -43,7 +44,7 @@ export default function TimelineItem({
         {!isLast && (
           <motion.div
             className="w-px grow bg-gradient-to-b from-purple-500/50 to-pink-500/30 dark:from-purple-500/30 dark:to-pink-500/10"
-            initial={false}
+            initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
             transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -53,7 +54,7 @@ export default function TimelineItem({
       <div className={cn("pb-8", isLast ? "pb-0" : "")}>
         <motion.div
           className="flex flex-col gap-0.5"
-          initial={false}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: index * 0.2 + 0.1 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -63,7 +64,7 @@ export default function TimelineItem({
           <p className="text-xs text-muted-foreground mb-2">{date}</p>
         </motion.div>
         <motion.div
-          initial={false}
+          initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: index * 0.2 + 0.4 }}
           viewport={{ once: true, margin: "-50px" }}
