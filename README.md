@@ -195,16 +195,47 @@ Use feature branches and pull requests into `main`; do not work directly on `mai
    For this solo-maintained repository, require the quality check but do not
    require an approving review; enable branch protection/rulesets on `main` and
    select the check named **Type check, build, and browser smoke**.
-5. After a successful GitHub deployment status for the production environment,
-   a read-only smoke check fetches the published page and verifies its HTTP
-   status and key content. It does not deploy anything.
+5. A push to `main` starts the production smoke workflow. It polls Netlify until
+   the published production deploy matches that exact Git commit, then checks
+   https://visda.ca for HTTP 200 and key HTML content. It does not deploy anything.
 
 GitHub branch rules and Netlify Deploy Preview settings cannot be configured by
-workflow files. Confirm them in their respective dashboards. The production
-smoke workflow requires the Netlify/GitHub integration to emit a successful
-`deployment_status` event with environment `Production` and URL on `visda.ca`;
-if no event is emitted, verify production manually in Netlify and at
-https://visda.ca. Netlify remains the only deployment system for the live site.
+workflow files. Confirm them in their respective dashboards. Netlify sends GitHub
+commit statuses, which are different from `deployment_status` events; the smoke
+workflow does not rely on those events. Netlify remains the only deployment system.
+
+#### Production smoke setup
+
+1. Create a dedicated Netlify access token with permission to read the `visda`
+   site and its deploys. Choose the narrowest account/site access available and an
+   appropriate expiry. A personal token may grant more than read-only access even
+   though this script only makes GET requests; treat it as a sensitive credential.
+2. In GitHub, go to **Settings → Secrets and variables → Actions → New repository
+   secret** and add `NETLIFY_AUTH_TOKEN`. Never put the value in a PR, source file,
+   public variable, or Netlify preview environment. MCP sign-in does not configure
+   this Actions secret.
+3. Merge the workflow change, then check **Actions → Production smoke check**.
+   Use **Run workflow** on `main` to check its current commit without redeploying.
+   Add the secret before merging to allow the first automatic run to succeed.
+
+The site ID is configured in `.github/workflows/production-smoke.yml`. The job
+only runs on `main`, uses read-only GitHub permissions, and never passes the token
+to the public site. It polls up to 60 times at 15-second intervals (requests also
+have timeouts), fails on API errors or a failed/skipped matching deploy, and fails
+if the matching deploy is never published (including publish locks or disabled
+builds). A newer `main` run cancels the older run to avoid checking superseded work.
+The script checks the published deploy again after fetching the public page to
+detect a deployment change during validation. It is a basic availability/content
+check, not a browser audit or proof that every CDN edge serves identical content.
+
+Test the polling logic without credentials or network access with:
+```bash
+node --test scripts/production-smoke.test.mjs
+```
+
+Do not make this post-deploy job a pre-merge required check. To roll back the
+automation, revert the workflow/script changes and remove the unused secret;
+neither action publishes or restores a site deployment.
 
 ### Current site: Netlify
 

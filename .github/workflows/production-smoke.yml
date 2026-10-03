@@ -1,30 +1,32 @@
 name: Production smoke check
 
 on:
-  deployment_status:
+  push:
+    branches: [main]
+  workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
+
+concurrency:
+  group: production-smoke
+  cancel-in-progress: true
 
 jobs:
   smoke:
-    if: >-
-      github.event.deployment_status.state == 'success' &&
-      github.event.deployment.environment == 'Production' &&
-      startsWith(github.event.deployment_status.environment_url, 'https://visda.ca')
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - name: Check deployed production page
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.19.0
+      - name: Wait for this commit to be published and check production
         env:
-          DEPLOY_URL: ${{ github.event.deployment_status.environment_url }}
-        run: |
-          node --input-type=module <<'NODE'
-          const url = new URL(process.env.DEPLOY_URL);
-          if (url.origin !== "https://visda.ca") throw new Error("Unexpected production origin");
-          const response = await fetch(url, { signal: AbortSignal.timeout(20_000) });
-          if (!response.ok) throw new Error(`Production returned HTTP ${response.status}`);
-          const html = await response.text();
-          for (const content of ["Stephen Davis", "Experience", "Projects"]) {
-            if (!html.includes(content)) throw new Error(`Production HTML missing: ${content}`);
-          }
-          console.log(`Production smoke check passed for ${url.origin}`);
-          NODE
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: df7ced09-9590-4bfc-858c-c9aa314181a6
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: node scripts/production-smoke.mjs
