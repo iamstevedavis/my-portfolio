@@ -262,8 +262,11 @@ my-portfolio (Astro) → Netlify → visda.ca
 - **Build command:** `npm run build`
 - **Publish directory:** `dist`
 - **Node.js:** 22 (v22.19.0 or newer); `.nvmrc` pins the major version, and `package.json` records the supported range.
+- **Asset caching:** `netlify.toml` sets a one-year immutable browser cache only for Astro's content-hashed `/_astro/*` assets. HTML keeps Netlify's normal revalidation behavior; unversioned public files such as `/profile.jpg` are not made immutable.
 
-The build command and output directory above describe this project's Astro build. Confirm the connected repository, production branch, build settings, and automatic deploy configuration in Netlify before relying on a push to deploy; those account-level settings are not recorded in this repository.
+The build command and output directory above match the existing project build setup. Confirm the connected repository, production branch, Node.js version, build settings, and automatic deploy configuration in Netlify before relying on a push to deploy; account-level settings are not exposed by this repository. Keep those dashboard values aligned with `netlify.toml` and `package.json` (`npm run build`, `dist`, Node 22.19+ within major version 22). The repository has both npm and Bun lockfiles, but the recorded Netlify build command and Docker image use npm; use `npm ci` when validating that deployment path.
+
+Local `astro dev` is a development server, not a production build. `npm run build` generates the production static site in `dist`; Netlify deploy previews and production deployments should use the same build command and publish directory, with the deploy context/branch determining the destination. After a preview deploy, verify that an HTML response revalidates and a generated `/_astro/<fingerprinted-file>` response includes `Cache-Control: public, max-age=31536000, immutable`. Also confirm `/profile.jpg` does not receive the immutable rule. Dashboard-only settings (including any context-specific overrides) must be checked in Netlify and are not represented in this file.
 
 To publish changes, commit and push to the branch configured for production in Netlify, then check the deployment dashboard for a successful build and verify https://visda.ca.
 
