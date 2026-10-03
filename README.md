@@ -21,7 +21,7 @@ A sleek, responsive portfolio website built with **Astro**, **React**, and **Tai
 ### Prerequisites
 
 - Node.js 22 (v22.19.0 or newer). With nvm, run `nvm install` and `nvm use` in this repository to use `.nvmrc`.
-- npm / yarn / bun
+- npm 10 (use the npm version bundled with the supported Node.js release)
 
 ### Installation
 
@@ -29,19 +29,11 @@ A sleek, responsive portfolio website built with **Astro**, **React**, and **Tai
 git clone https://github.com/iamstevedavis/my-portfolio.git
 cd my-portfolio
 
-# Install dependencies
-npm install
-# or
-yarn install
-# or
-bun install
+# Install the exact dependency versions from package-lock.json
+npm ci
 
 # Start development server
 npm run dev
-# or
-yarn dev
-# or
-bun dev
 ```
 
 Visit `http://localhost:4321` in your browser to see it in action.
@@ -161,19 +153,39 @@ export const awards = [
 
 ```bash
 npm run build
-# or
-yarn build
-# or
-bun run build
 ```
 
 To preview the production build locally:
 
 ```bash
 npm run preview
-# or
-yarn preview
 ```
+
+### Dependency maintenance
+
+npm is the only supported package manager. `package-lock.json` is the source of
+truth for dependency resolution; do not use Yarn or Bun or commit another lockfile.
+After changing dependencies, regenerate the npm lockfile with `npm install` using
+Node.js 22.19.0 or newer in the supported 22.x range, then verify the change from
+a clean install:
+
+```bash
+npm ci
+npm run check
+npm run build
+npm run check:prerender
+npm run test:smoke
+npm audit
+```
+
+Dependabot checks npm dependencies and GitHub Actions weekly. Minor and patch
+updates are grouped by runtime and development dependencies; major updates remain
+separate reviewable pull requests. Review the changelog and `npm audit` output,
+run the checks above, and review the Netlify Deploy Preview before merging any
+dependency update. Do not auto-merge framework, major, or security updates without
+review. `npm audit fix` can change the lockfile; inspect its proposed diff and
+rerun validation before committing it. Avoid `npm audit fix --force` unless the
+required major upgrade is deliberately assessed and validated.
 
 ## 📤 Deployment
 
