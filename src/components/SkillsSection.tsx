@@ -7,7 +7,7 @@ import { GlassCard } from "./ui/glass-card";
 function SkillTag({ skill, index }: { skill: string; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
+      initial={false}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{
         type: "spring",
@@ -60,7 +60,7 @@ export default function SkillsSection() {
         <motion.div
           className="space-y-6"
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >

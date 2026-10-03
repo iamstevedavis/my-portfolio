@@ -1,11 +1,14 @@
 import ThemeToggle from "./ui/theme-toggle";
 import { personalInfo } from "@/lib/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function GlassHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => setHasMounted(true), []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -48,7 +51,7 @@ export default function GlassHeader() {
         </nav>
 
         <div className="flex items-center space-x-2">
-          <ThemeToggle />
+          {hasMounted ? <ThemeToggle /> : <span className="h-9 w-9" aria-hidden="true" />}
 
           {/* Mobile Menu Button */}
           <motion.button
@@ -56,6 +59,7 @@ export default function GlassHeader() {
             onClick={toggleMenu}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.95 }}
+            disabled={!hasMounted}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -64,7 +68,7 @@ export default function GlassHeader() {
 
       {/* Mobile Navigation */}
       <AnimatePresence>
-        {isMenuOpen && (
+        {hasMounted && isMenuOpen && (
           <motion.div
             className="md:hidden py-4 px-4 border-t border-border/10 backdrop-blur-md backdrop-filter bg-background/80 dark:bg-background/40"
             initial={{ opacity: 0, height: 0 }}
