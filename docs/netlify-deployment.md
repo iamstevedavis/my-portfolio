@@ -46,3 +46,43 @@ For lightweight availability checks, use an existing free uptime checker if avai
 Record a mobile Lighthouse run against the production URL after rendering-related fixes, including the date, URL, device/throttling mode, and score/report link. Lighthouse is a **lab** measurement for one simulated run; it is not field data and does not establish real-user Core Web Vitals. Do not claim a RUM baseline without privacy-reviewed field measurement. Add analytics/RUM only if a specific question justifies the collection and its privacy impact is acceptable; otherwise leave it out. No Lighthouse run or measured Core Web Vitals baseline is included in this change.
 
 Keep the site statically generated. Do not add functions, a database, forms, analytics, or paid extensions just to provide monitoring or satisfy this checklist; use external lightweight checks where needed and revisit architecture only for a concrete feature.
+
+## Operational audit — 2026-10-03
+
+This is a point-in-time check, not a guarantee that provider settings will remain
+unchanged. The connected Netlify and Cloudflare read access and public DNS/TLS/RDAP
+lookups provided the following evidence:
+
+- **Production:** Netlify reports the production deploy as ready and published on
+  `main` at commit `4f9a0e1da771cc40645f0c74448e21b3a467a1ba`. The published URL
+  returned HTTP 200. `www.visda.ca` redirects to `https://visda.ca/` with HTTP 301.
+- **DNS and registrar:** CIRA RDAP lists CanSpace Solutions Inc. as registrar and
+  an expiration date of 2027-10-13. The active authoritative nameservers are
+  Cloudflare's `jade.ns.cloudflare.com` and `will.ns.cloudflare.com`; the
+  Cloudflare zone is active. Its apex and `www` records are DNS-only CNAMEs to
+  Netlify. RDAP redacts registrant details, so it does not identify the renewal
+  contact or confirm billing/auto-renewal. Confirm those in the registrar account.
+- **TLS:** The live `visda.ca` certificate covers `visda.ca` and `www.visda.ca`,
+  is issued by Let's Encrypt, and expires 2026-11-03. Since these DNS records are
+  not proxied through Cloudflare, Netlify is serving the certificate. A currently
+  valid certificate does not establish that renewal notifications or auto-renewal
+  are configured; confirm certificate/renewal status in Netlify before expiry.
+  Cloudflare Universal SSL is enabled for the zone but is not the certificate
+  served for these DNS-only hostnames.
+- **Monitoring:** The Cloudflare zone has no configured health checks. Netlify's
+  project metadata and the available GitHub/Netlify read APIs do not expose build
+  notification recipients or a configured external uptime alert. These settings
+  and delivery therefore remain unverified; configure a low-noise failure alert
+  and an uptime check only after confirming the monitored recipient and provider.
+- **Credentials:** The connected tools cannot inspect a private password manager.
+  Confirm its inventory contains the Netlify, Cloudflare, and registrar account
+  ownership/recovery details and that credentials are accessible to the intended
+  owner. Keep secret values and private recovery data out of this repository.
+- **Mobile Lighthouse:** No score is recorded. The PageSpeed Insights API returned
+  HTTP 429 during the audit, and the local Lighthouse run could not start because
+  the available Chromium binary lacks the system library `libnspr4.so`. Rerun a
+  mobile Lighthouse lab test when an available browser/runtime or PSI quota allows;
+  record the run date, URL, emulation mode, score, and report link. This is lab data,
+  not real-user Core Web Vitals.
+
+No monitoring service, analytics, or paid extension was added during this audit.
