@@ -177,6 +177,35 @@ yarn preview
 
 ## 📤 Deployment
 
+### Pull request and production checks
+
+Use feature branches and pull requests into `main`; do not work directly on `main`:
+
+1. Create a feature branch and open a PR targeting `main`.
+2. GitHub Actions installs the committed npm lockfile on Node 22.19.0, runs
+   `astro check`, builds the site, verifies that key content exists in the
+   prerendered HTML (without JavaScript), and runs Chromium/axe browser smoke
+   checks for content, navigation, theme, mobile menu, console errors, and
+   serious/critical accessibility violations.
+3. Review the Netlify Deploy Preview before merging, including mobile and desktop
+   layouts, both themes, and keyboard navigation. Netlify preview creation is an
+   account-level setting: confirm it is enabled for PRs in the Netlify site and
+   that preview builds use the same build command and Node version.
+4. Merge only after the quality check passes and the preview is reviewed.
+   For this solo-maintained repository, require the quality check but do not
+   require an approving review; enable branch protection/rulesets on `main` and
+   select the check named **Type check, build, and browser smoke**.
+5. After a successful GitHub deployment status for the production environment,
+   a read-only smoke check fetches the published page and verifies its HTTP
+   status and key content. It does not deploy anything.
+
+GitHub branch rules and Netlify Deploy Preview settings cannot be configured by
+workflow files. Confirm them in their respective dashboards. The production
+smoke workflow requires the Netlify/GitHub integration to emit a successful
+`deployment_status` event with environment `Production` and URL on `visda.ca`;
+if no event is emitted, verify production manually in Netlify and at
+https://visda.ca. Netlify remains the only deployment system for the live site.
+
 ### Current site: Netlify
 
 The live website at **https://visda.ca** is served by **Netlify**. This repository (`iamstevedavis/my-portfolio`) contains the current Astro source code, so make website changes here—not in the older Gatsby or GitHub Pages repositories.

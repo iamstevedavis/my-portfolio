@@ -1,0 +1,30 @@
+name: Production smoke check
+
+on:
+  deployment_status:
+
+permissions: {}
+
+jobs:
+  smoke:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'Production' &&
+      startsWith(github.event.deployment_status.environment_url, 'https://visda.ca')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check deployed production page
+        env:
+          DEPLOY_URL: ${{ github.event.deployment_status.environment_url }}
+        run: |
+          node --input-type=module <<'NODE'
+          const url = new URL(process.env.DEPLOY_URL);
+          if (url.origin !== "https://visda.ca") throw new Error("Unexpected production origin");
+          const response = await fetch(url, { signal: AbortSignal.timeout(20_000) });
+          if (!response.ok) throw new Error(`Production returned HTTP ${response.status}`);
+          const html = await response.text();
+          for (const content of ["Stephen Davis", "Experience", "Projects"]) {
+            if (!html.includes(content)) throw new Error(`Production HTML missing: ${content}`);
+          }
+          console.log(`Production smoke check passed for ${url.origin}`);
+          NODE
