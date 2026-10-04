@@ -26,7 +26,8 @@
   not the main checkout. For example:
   ```sh
   git fetch origin main
-  git worktree add -b docs/example ../my-portfolio-example origin/main
+  mkdir -p ~/worktrees/visda.ca
+  git worktree add -b docs/example ~/worktrees/visda.ca/example origin/main
   ```
 - Use Node.js matching `package.json` and `.nvmrc`: Node 22, at least v22.19.0,
   and below v23. Confirm the version before installing/building.
