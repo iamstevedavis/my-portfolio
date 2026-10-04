@@ -5,6 +5,7 @@ A sleek, responsive portfolio website built with **Astro**, **React**, and **Tai
 ![Portfolio Screenshot](https://github.com/user-attachments/assets/287dbb83-9b33-4df7-9cee-f58cdec2dfbe)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/df7ced09-9590-4bfc-858c-c9aa314181a6/deploy-status)](https://app.netlify.com/sites/visda/deploys)
+[![Better Stack Badge](https://incidents.betterstack.com/status-badges/v2/monitor/2ziya.svg)](https://incidents.betterstack.com/?utm_source=status_badge)
 
 ## ✨ Features
 
@@ -269,6 +270,24 @@ The build command and output directory above match the existing project build se
 Local `astro dev` is a development server, not a production build. `npm run build` generates the production static site in `dist`; Netlify deploy previews and production deployments should use the same build command and publish directory, with the deploy context/branch determining the destination. After a preview deploy, verify that an HTML response revalidates and a generated `/_astro/<fingerprinted-file>` response includes `Cache-Control: public, max-age=31536000, immutable`. Also confirm `/profile.jpg` does not receive the immutable rule. Dashboard-only settings (including any context-specific overrides) must be checked in Netlify and are not represented in this file.
 
 To publish changes, commit and push to the branch configured for production in Netlify, then check the deployment dashboard for a successful build and verify https://visda.ca.
+
+### Uptime monitoring
+
+[Better Stack](https://betterstack.com/) provides external uptime monitoring for
+the live site at https://visda.ca. The status badge above links to Better Stack's
+incident/status page. Monitor cadence, alert thresholds, notification routing,
+and TLS-expiry settings are managed in the Better Stack account; do not store
+private contact details or credentials in this repository. The site owner is
+responsible for maintaining the monitor and its alert destinations.
+
+If an alert fires, first check the public site and the [Netlify deploy dashboard](https://app.netlify.com/sites/visda/deploys)
+for an active incident or failed/recent deployment. Confirm whether the issue
+is site-wide or limited to a monitor check, investigate the corresponding deploy
+or hosting status, and restore service through the normal Netlify deployment
+workflow. After recovery, verify https://visda.ca and confirm the monitor has
+returned to healthy before dismissing the incident. For TLS alerts, check the
+domain certificate and DNS/CDN configuration; do not change DNS as part of
+routine incident response without owner approval.
 
 ### Previous site: Gatsby + GitHub Pages
 
