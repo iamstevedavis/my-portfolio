@@ -160,7 +160,7 @@ export const projects = [
   },
   {
     title: "Visda.ca",
-    github: "https://github.com/iamstevedavis/my-portfolio",
+    github: "https://github.com/iamstevedavis/visda.ca",
     description: [
       "Personal website originally built with React, MUI, Gatsby, GraphQL, and optimized image lazy-loading.",
       "The current version uses Astro, React, and Tailwind CSS and is hosted on Netlify.",

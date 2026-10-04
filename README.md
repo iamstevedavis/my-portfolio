@@ -1,4 +1,4 @@
-# My Portfolio
+# Visda.ca
 
 A sleek, responsive portfolio website built with **Astro**, **React**, and **Tailwind CSS**, featuring modern animations and stunning glassmorphism effects.
 
@@ -27,8 +27,8 @@ A sleek, responsive portfolio website built with **Astro**, **React**, and **Tai
 ### Installation
 
 ```bash
-git clone https://github.com/iamstevedavis/my-portfolio.git
-cd my-portfolio
+git clone https://github.com/iamstevedavis/visda.ca.git
+cd visda.ca
 
 # Install the exact dependency versions from package-lock.json
 npm ci
@@ -252,10 +252,10 @@ neither action publishes or restores a site deployment.
 
 ### Current site: Netlify
 
-The live website at **https://visda.ca** is served by **Netlify**. This repository (`iamstevedavis/my-portfolio`) contains the current Astro source code, so make website changes here—not in the older Gatsby or GitHub Pages repositories.
+The live website at **https://visda.ca** is served by **Netlify**. This repository (`iamstevedavis/visda.ca`) contains the current Astro source code, so make website changes here—not in the older Gatsby or GitHub Pages repositories.
 
 ```text
-my-portfolio (Astro) → Netlify → visda.ca
+visda.ca (Astro) → Netlify → visda.ca
 ```
 
 - **Deployment dashboard:** [Netlify site `visda`](https://app.netlify.com/sites/visda/deploys)
