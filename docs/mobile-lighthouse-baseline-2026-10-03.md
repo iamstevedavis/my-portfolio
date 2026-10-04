@@ -1,6 +1,6 @@
 # Mobile Lighthouse baseline — 2026-10-03
 
-Source: [PageSpeed Insights mobile report](https://pagespeed.web.dev/analysis/https-visda-ca/w6huwjun5v?form_factor=mobile)
+Sources: [PageSpeed Insights mobile report](https://pagespeed.web.dev/analysis/https-visda-ca/w6huwjun5v?form_factor=mobile) · [Archived Lighthouse JSON](lighthouse-reports/mobile-visda-2026-10-03.json)
 
 This records the successful Lighthouse lab run embedded in the supplied report. One run is accepted as the requested point-in-time baseline; it is not a statistical summary of performance over time. It is **lab data, not real-user Core Web Vitals (CrUX) data**. The report has no CrUX field data. Although the report page displays Oct 3, 2026 at 8:48:10 PM, the Lighthouse result itself records `fetchTime` as `2026-10-04T00:48:13.292Z` (UTC).
 
